@@ -7,7 +7,7 @@ class Person {
         this.location = attributes.location;
     }
     speak() {
-        return `Hello, my name is ${this.name}, I am from ${this.location}`;
+        return `Hello, my name is ${this.name}. I am from ${this.location}`;
     }
 }
 
@@ -38,10 +38,10 @@ class Student extends Person {
             console.log(this.favSubjects[i]);
         }
     }
-    PRAssignment(subject) {
-        console.log(`${this.name} has submitted a PR for ${subject}.`);
+    PRAssignment(student, subject) {
+        console.log(`${student.name} has submitted a PR for ${subject}.`);
     }
-    sprintChallenge(subject) {
+    sprintChallenge(student,subject) {
         console.log(`${student.name} has began sprint challenge on ${subject}.`);
     }
 }
@@ -55,7 +55,7 @@ class ProjectManagers extends Instructor {
     standUp(channel) {
         console.log(`${this.name} announces to ${channel}, @channel standy times!`);
     }
-    debugsCode(subject) {
+    debugsCode(student, subject) {
         console.log(`${this.name} debugs ${student.name}'s code on ${subject}.`)
     }
 }
@@ -142,4 +142,10 @@ console.log(megan.location);
 console.log(hailey.favSubjects);
 console.log(megan.listSubjects());
 console.log(hailey.sprintChallenge(hailey, "CSS"));
-console.log(megan.PRAssignment("React"));
+console.log(megan.PRAssignment(megan, "React"));
+console.log(chloe.gradClassName);
+console.log(chloe.age);
+console.log(chloe.standUp("#WebPT7_Sprint03"));
+console.log(adam.speak());
+console.log(adam.debugsCode(hailey, "JavaScript"));
+console.log(adam.favInstructor);
