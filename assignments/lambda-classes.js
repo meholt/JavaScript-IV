@@ -24,6 +24,11 @@ class Instructor extends Person {
     grade(student, subject) {
         console.log(`${student.name} receives a perfect score on ${subject}.`);
     }
+    calculateGrade(student) {
+        let points = student.grade + (Math.floor(Math.random() * 201) - 100);
+        let newGrade = (points / 200)*100;
+        console.log(newGrade);
+    }
 }
 
 class Student extends Person {
@@ -32,6 +37,7 @@ class Student extends Person {
         this.previousBackground = attributes_student.previousBackground;
         this.className = attributes_student.className;
         this.favSubjects = attributes_student.favSubjects;
+        this.grade = attributes_student.grade;
     }
     listSubjects() {
         for(let i = 0; i < this.favSubjects.length; i++) {
@@ -43,6 +49,14 @@ class Student extends Person {
     }
     sprintChallenge(student,subject) {
         console.log(`${student.name} has began sprint challenge on ${subject}.`);
+    }
+    graduate() {
+        let percentage = this.grade / 100;
+        if (percentage > .7) {
+            return `Congratulations! You're ready to graduate!`;
+        } else {
+            return `Don't give up! Keep studying!`;
+        }
     }
 }
 
@@ -78,7 +92,8 @@ const megan = new Student({
     age: 28,
     previousBackground: "#CodeNewbie",
     className: "WEBPT7",
-    favSubjects: ["HTML", "CSS", "JavaScript"]
+    favSubjects: ["HTML", "CSS", "JavaScript"],
+    grade: 97
 });
 
 const hailey = new Student({
@@ -87,7 +102,8 @@ const hailey = new Student({
     age: 25,
     previousBackground: "Intermediate Coder",
     className: "WEBPT7",
-    favSubjects: ["CSS", "JavaScript", "C++"]
+    favSubjects: ["CSS", "JavaScript", "C++"],
+    grade: 93
 });
 
 const mel = new Instructor({
@@ -133,19 +149,21 @@ const adam = new ProjectManagers({
 console.log(jan.location);
 console.log(thomas.speak());
 console.log(mel.location);
-console.log(mel.grade(megan, "JavaScript"));
+mel.grade(megan, "JavaScript");
 console.log(james.catchPhrase);
-console.log(james.demo("Responsive Web Design"));
+james.demo("Responsive Web Design");
 console.log(james.favLanguage);
 console.log(megan.previousBackground);
 console.log(megan.location);
 console.log(hailey.favSubjects);
-console.log(megan.listSubjects());
-console.log(hailey.sprintChallenge(hailey, "CSS"));
-console.log(megan.PRAssignment(megan, "React"));
+megan.listSubjects();
+hailey.sprintChallenge(hailey, "CSS");
+megan.PRAssignment(megan, "React");
 console.log(chloe.gradClassName);
 console.log(chloe.age);
-console.log(chloe.standUp("#WebPT7_Sprint03"));
+chloe.standUp("#WebPT7_Sprint03");
 console.log(adam.speak());
-console.log(adam.debugsCode(hailey, "JavaScript"));
+adam.debugsCode(hailey, "JavaScript");
 console.log(adam.favInstructor);
+james.calculateGrade(megan);
+console.log(hailey.graduate());
